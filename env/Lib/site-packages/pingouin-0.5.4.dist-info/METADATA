@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: pingouin
+Version: 0.5.4
+Summary: Pingouin: statistical package for Python
+Home-page: https://pingouin-stats.org/index.html
+Download-URL: https://github.com/raphaelvallat/pingouin/
+Author: Raphael Vallat
+Author-email: raphaelvallat9@gmail.com
+Maintainer: Raphael Vallat
+Maintainer-email: raphaelvallat9@gmail.com
+License: GPL-3.0
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: pandas (>=1.5)
+Requires-Dist: matplotlib
+Requires-Dist: seaborn
+Requires-Dist: statsmodels
+Requires-Dist: scikit-learn
+Requires-Dist: pandas-flavor
+Requires-Dist: tabulate
+
+Pingouin is a statistical Python package based on Pandas.
