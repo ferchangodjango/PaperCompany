@@ -9,25 +9,26 @@
 
 {% block bokeh_script %}
 
-{{ data.js_resources|indent(4)|safe }}
-{{ data.css_resources|indent(4)|safe }}
-{{ data.plot_script|indent(4)|safe }}
+{{ data.js_resources1|indent(4)|safe }}
+{{ data.css_resources1|indent(4)|safe }}
+{{ data.script1|indent(4)|safe }}
 
 {{ data.js_resources2|indent(4)|safe }}
 {{ data.css_resources2|indent(4)|safe }}
-{{ data.plot_script2|indent(4)|safe }}
+{{ data.script2|indent(4)|safe }}
 
 {{ data.js_resources3|indent(4)|safe }}
 {{ data.css_resources3|indent(4)|safe }}
-{{ data.plot_script3|indent(4)|safe }}
+{{ data.script3|indent(4)|safe }}
 
 {{ data.js_resources4|indent(4)|safe }}
 {{ data.css_resources4|indent(4)|safe }}
-{{ data.plot_script4|indent(4)|safe }}
+{{ data.script4|indent(4)|safe }}
 
 {{ data.js_resources5|indent(4)|safe }}
 {{ data.css_resources5|indent(4)|safe }}
-{{ data.plot_script5|indent(4)|safe }}
+{{ data.script5|indent(4)|safe }}
+
 
 {% endblock %}
 
@@ -42,18 +43,11 @@
             
             
             <div class="card-body">
-              {{ data.plot_div|indent(4)|safe}}
+              {{ data.div1|indent(4)|safe}}
               <p class="card-text">You can see the profit for seller, its interestig view these,
                 becouse the seller than have more sells, in volumen, not is necesary , the seller 
                 than haver more profit, in money.
               </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">LogOut</button>
-
-                </div>
-                <small class="text-body-secondary">9 mins</small>
-              </div>
             </div>
           </div>
         </div>
@@ -63,15 +57,8 @@
             
             
             <div class="card-body">
-              {{ data.plot_div2|indent(4)|safe}}
+              {{ data.div2|indent(4)|safe}}
               <p class="card-text">This is the graph of the sells, in volume, you need to monitoring that</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">LogOut</button>
-
-                </div>
-                <small class="text-body-secondary">9 mins</small>
-              </div>
             </div>
           </div>
         </div>
@@ -84,18 +71,11 @@
             
             
             <div class="card-body">
-              {{ data.plot_div3|indent(4)|safe}}
+              {{ data.div3|indent(4)|safe}}
               <p class="card-text">This is the Pareto of profit for products, you need check that,
                 becouse the product than have the more profit, not is necesary, the product than have more
                 sells in volumen.
               </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">LogOut</button>
-
-                </div>
-                <small class="text-body-secondary">9 mins</small>
-              </div>
             </div>
           </div>
         </div>
@@ -105,17 +85,12 @@
             
             
             <div class="card-body">
-              {{ data.plot_div4|indent(4)|safe}}
+              {{ data.div4|indent(4)|safe}}
+              
               <p class="card-text">This is the quantity of sells for product, you need to monitoring that.
                 its important for have a health inventary
               </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">LogOut</button>
 
-                </div>
-                <small class="text-body-secondary">9 mins</small>
-              </div>
             </div>
           </div>
         </div>
@@ -127,18 +102,17 @@
             
             
             <div class="card-body">
-              {{ data.plot_div5|indent(4)|safe}}
+              {{ data.div5|indent(4)|safe}}
               <p class="card-text">Here is a important graph , becouse you can view
                 the profit for seller, and you can viwe the detail, I mean, you can see
                 how of each  product earn the seller.
 
               </p>
               <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">LogOut</button>
-
+                <div class="row">
+                    <a type="button" class="btn btn-primary" href="{{url_for('home')}}"> home</a>
                 </div>
-                <small class="text-body-secondary">9 mins</small>
+                
               </div>
             </div>
           </div>

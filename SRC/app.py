@@ -8,6 +8,7 @@ from models.entities.User import User
 from models.ModelUser import ModelUser
 #Data Analisys
 from DataAnalisys.DataAnalisys import Analisys
+from DataAnalisys.Query import Query
 
 app=Flask(__name__)
 db=MySQL(app)
@@ -20,7 +21,7 @@ def userloader(id):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return redirect(url_for('login'))
 
 @app.route('/login',methods=['GET','POST'])
 def login():
@@ -28,8 +29,9 @@ def login():
         user=User(0,request.form['Username'],request.form['Password'])
         loggeduser=ModelUser.LoggedUser(db,user)
         if loggeduser !=None:
-            login_user(loggeduser)
+            
             if loggeduser.password:
+                login_user(loggeduser)
                 return redirect(url_for('home'))
             
             else:
@@ -53,10 +55,35 @@ def logout():
     logout_user()
     return redirect(url_for('login'))
 
-@app.route('/plot')
+@app.route('/plot',methods=['GET'])
+@login_required
 def plot():
-    data=Analisys.pareto_profit_sellers(db)
-    return render_template('page.html',data=data)
+    
+    #Definiendo los Query del sistema
+    query_seller_profit=Query.queryprofitseller()
+    query_seller_quantity=Query.queryquantityseller()
+
+    query_product_profit=Query.queryprofitproducts()
+    query_product_quantity=Query.queryquantityproducts()
+
+    query_stack=Query.querystackchar()
+    
+    #Definiendo graficas
+    seller_profit=Analisys.queryexecute(db,query_seller_profit,'sellers','profit')
+    seller_quantity=Analisys.queryexecute(db,query_seller_quantity,'sellers','Quantity')
+
+    product_profit=Analisys.queryexecute(db,query_product_profit,'product','profit')
+    product_quantity=Analisys.queryexecute(db,query_product_quantity,'product','quantity')
+
+    seller_products_profit=Analisys.queryexecutestack(db,query_stack,'seller','products','profit')
+    #Definiendo la lista de diccionarios
+    lista_diccionarios=[seller_profit,seller_quantity,product_profit,product_quantity,seller_products_profit]
+
+    #Definiendo el diccionario maestro.
+    data=Analisys.uniondictionary(lista_diccionarios)
+    
+    
+    return render_template('generalplot.html',data=data)
 
 
 if __name__=='__main__':

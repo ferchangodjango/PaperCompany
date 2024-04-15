@@ -10,8 +10,8 @@ ID_SELLER=list(DataSellers['IDSELLER'])
 ID_PRODUCTS=list(DataProducts['IDPRODUCTS'])
 PRICE_PRODUCTS=list(DataProducts['PRODUCTPRICE'])
 #Get a random quantity of sells, for 50 sells.
-QUANTITY_SELLS=[random.randint(1,10) for i in range(50)]
-QUANTITY_ID_RANDMO=[random.randint(0,12) for i in range(50)]
+QUANTITY_SELLS=[random.randint(1,10) for i in range(2)]
+QUANTITY_ID_RANDMO=[random.randint(0,12) for i in range(2)]
 #Main table for use in the list.
-TOTAL_SELLER=[(ID_PRODUCTS[QUANTITY_ID_RANDMO[i]],random.choice(ID_SELLER),QUANTITY_SELLS[i]) for i in range(50)]
+TOTAL_SELLER=[(ID_PRODUCTS[QUANTITY_ID_RANDMO[i]],random.choice(ID_SELLER),QUANTITY_SELLS[i]) for i in range(2)]
 #print(TOTAL_SELLER)

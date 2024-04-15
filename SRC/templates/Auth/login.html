@@ -12,6 +12,8 @@ Login
 <main class="form-signin w-100 m-auto">
     <form action="login" method="POST">
       <img class="mb-4" src="{{url_for('static',filename='img/paper.svg')}}" alt="" width="300" height="100">
+
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
       {% with message=get_flashed_messages() %}
       {% if message %}
       {% for message in message %}
@@ -22,7 +24,6 @@ Login
       {% endfor %}
       {% endif %}
       {% endwith %}
-      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
   
       <div class="form-floating">
         <input type="user" class="form-control" id="floatingUsername" name="Username" placeholder="Username">
