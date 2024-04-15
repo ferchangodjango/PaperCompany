@@ -48,3 +48,10 @@ class Query():
                 INNER JOIN products ON sells.IDPRODUCTS=products.IDPRODUCTS"""
         
         return query
+    
+    @classmethod
+    def queryinsert(self,data):
+        query="""INSERT INTO sells (IDPRODUCTS,IDSELLER,QUANTITY)
+                        VALUES ({0}, {1}, {2})""".format(data['IDPRODUCT'],data['IDSELLERS'],data['QUANTITY'])
+        return query
+        

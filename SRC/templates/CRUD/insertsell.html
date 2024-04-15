@@ -1,0 +1,59 @@
+{% extends './layout.html' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/login.css')}}">
+{% endblock %}
+
+{% block bokeh_script %}
+
+{{ data.js_resources1|indent(4)|safe }}
+{{ data.css_resources1|indent(4)|safe }}
+{{ data.script1|indent(4)|safe }}
+
+{% endblock %}
+
+
+{% block body %}
+<div class="row">
+  <div class="col">
+      <main class="form-signin w-100 m-auto">
+        {% from './macro.html' import render_field %}
+        <form action="insertsell" method="POST">
+          <img class="mb-4" src="{{url_for('static',filename='img/sell.svg')}}" alt="" width="300" height="100">
+
+          <h1 class="h3 mb-3 fw-normal">InsertSell</h1>
+          <div class="form-floating">
+            {{render_field(form.IDPRODUCTS,class="form-control", placeholder="IDPRODUCT")}}
+          </div>
+          
+          <div class="form-floating">
+            {{render_field(form.IDSELLER,class="form-control",placeholder="IDSELLER")}}
+          </div>
+
+          <div class="form-floating">
+            {{render_field(form.QUANTITY,class="form-control",placeholder="QUANTITY")}}
+          </div>
+
+          <button class="btn btn-primary w-100 py-2" type="submit">Insertar</button>
+          <p class="mt-5 mb-3 text-body-secondary">&copy; 2024–2025</p>
+        </form>
+      </main>
+  </div>
+
+  <div class="col">
+    <div class="card shadow-sm">
+      
+      
+      <div class="card-body">
+        {{ data.div1|indent(4)|safe}}
+        
+        <p class="card-text">You can see the profit for seller, its interestig view these,
+          becouse the seller than have more sells, in volumen, not is necesary , the seller 
+          than haver more profit, in money.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+  
+{% endblock %}

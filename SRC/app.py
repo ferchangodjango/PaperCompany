@@ -4,6 +4,7 @@ from flask_mysqldb import MySQL
 from flask_login import LoginManager,login_user,logout_user,login_required
 #Entities
 from models.entities.User import User
+from models.forms import FormSells
 #Models
 from models.ModelUser import ModelUser
 #Data Analisys
@@ -85,6 +86,32 @@ def plot():
     
     return render_template('generalplot.html',data=data)
 
+#Definiendo el CRUD
+@app.route('/insertsell',methods=['GET','POST'])
+@login_required
+def insertsell():
+    formulario=FormSells()
+    if request.method=='POST':
+        data={
+            "IDPRODUCT":request.form['IDPRODUCTS'],
+            "IDSELLERS":request.form['IDSELLER'],
+            "QUANTITY":request.form['QUANTITY']
+        }
+        query=Query.queryinsert(data)
+        insert_data=ModelUser.queryexecute(db,query)
+        query_seller_quantity=Query.queryquantityseller()
+        seller_quantity=Analisys.queryexecute(db,query_seller_quantity,'sellers','Quantity')
+        lista_diccionarios=[seller_quantity]
+        data2=Analisys.uniondictionary(lista_diccionarios)
+        return render_template('CRUD/insertsell.html',data=data2,form=formulario)
+    else:
+        query_seller_quantity=Query.queryquantityseller()
+        seller_quantity=Analisys.queryexecute(db,query_seller_quantity,'sellers','Quantity')
+        lista_diccionarios=[seller_quantity]
+        data2=Analisys.uniondictionary(lista_diccionarios)
+
+
+        return render_template('CRUD/insertsell.html',data=data2,form=formulario)
 
 if __name__=='__main__':
     app.config.from_object(ConfigObject)

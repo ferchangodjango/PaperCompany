@@ -1,4 +1,5 @@
 from models.entities.User import User
+from flask import jsonify
 
 class ModelUser():
 
@@ -39,5 +40,16 @@ class ModelUser():
         except Exception as ex:
             return Exception(ex)
     
+    @classmethod
+    def queryexecute(self,db,query):
+        try:
+            cursor=db.connection.cursor()
+            cursor.execute(query)
+            db.connection.commit()
+
+            return jsonify({"message":"Insert data Ok!!"})
+        
+        except Exception as ex:
+            raise Exception(ex)
 
         
